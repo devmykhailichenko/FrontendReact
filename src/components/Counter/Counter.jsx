@@ -1,43 +1,20 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-class Counter extends React.Component {
-    constructor(props) {
-        super(props);
+import { increment, decrement, reset } from "../../store/counter/counterActions.js";
 
-        this.state = {
-            counter: props.start,
-            step: 1,
-            title: "Counter component"
-        }
-    }
+export default function Counter() {
+    const dispatch = useDispatch();
+    const { value } = useSelector((state) => state.counter);
 
-    handleIncrement = () => {
-        this.setState((prevState) => {
-            return {
-                counter: prevState.counter + this.state.step,
-            }
-        });
-    }
+    return (
+        <div>
+            <h1>Counter</h1>
 
-    handleChangeStep = () => {
-        this.setState({
-            step: this.state.step + 2,
-        });
-    }
-
-    render() {
-        return (
-            <div>
-                <h2>{this.state.title}</h2>
-
-                <h1>Counter: {this.state.counter}</h1>
-
-                <button onClick={this.handleIncrement}>Increase</button>
-
-                <button onClick={this.handleChangeStep}>Change step by 2</button>
-            </div>
-        )
-    }
+            <button onClick={() => {dispatch(increment())}}>Increment</button>
+            <button onClick={() => {dispatch(increment(5))}}>Increment + 5</button>
+            <button onClick={() => {dispatch(decrement())}}>Decrement</button>
+            <span>{value}</span>
+            <button onClick={() => {dispatch(reset()) }}>Reset</button>
+        </div>
+    )
 }
-
-export default Counter;

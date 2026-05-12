@@ -1,22 +1,34 @@
-import React  from "react";
-import Message from "./components/Message/Message.jsx";
-import Wrapper from "./components/Wrapper/Wrapper.jsx";
-import Counter from "./components/Counter/Counter.jsx";
-import TaskList from "./components/TaskList/TaskList.jsx";
+import { Routes, Route } from 'react-router-dom';
 
-class App extends React.Component {
-  render() {
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+
+import Cart from "./pages/Cart/Cart.jsx";
+import Products from "./pages/Products/Products.jsx";
+import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
+import Home from "./pages/Home/Home.jsx";
+import FormRegular from "./pages/FormRegular/FormRegular.jsx";
+import FormFormik from "./pages/FormFormik/FormFormik.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+
+export default function App() {
     return (
-        <div>
-          <TaskList />
-          <Counter start={5} />
-          <Counter start={2} />
-          <Counter start={1} />
-          <Message />
-          <Wrapper />
+        <div className="app">
+            <Header />
+
+            <main className="main">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/products/:id" element={<ProductDetails />} />
+                    <Route path="/form-regular" element={<FormRegular />} />
+                    <Route path="/form-formik" element={<FormFormik />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </main>
+
+            <Footer />
         </div>
     )
-  }
 }
-
-export default App
