@@ -1,24 +1,33 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { addToCart } from "../../store/slices/cartSlice.js";
+import { getPostById } from "../../store/thunks/postsThunk.js";
 
-export default function ProductDetails() {
+export default function PostDetails() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const { id } = useParams();
-    const { products } = useSelector(state => state.products);
+    const { selectedPost, loading, error } = useSelector(state => state.posts);
+    const state = useSelector(state => state);
+    console.log(state, loading, error);
 
-    const product = products.find(product => product.id === +id);
+    useEffect(() => {
+        if(id) {
+            dispatch(getPostById(id));
+        }
+    }, [id]);
 
-    const backToProducts = () => {
-        navigate("/products");
+    const backToPosts = () => {
+        navigate("/posts");
     }
 
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
+    if(loading) {
+        return <h1>Post loading...</h1>
+    }
 
-        backToProducts();
+    if(error) {
+        return <h1>Error: {error}</h1>
     }
 
     return (
@@ -26,31 +35,23 @@ export default function ProductDetails() {
             <div className="card details-card">
                 <div className="details-content">
                     <span className="details-label">
-                        Product Information
+                        Post details
                     </span>
 
                     <h1 className="details-title">
-                        {product.title}
+                        {selectedPost?.title}
                     </h1>
 
                     <p className="details-description">
-                        {product.description}
+                        {selectedPost?.body}
                     </p>
 
-                    <div className="details-price">
-                        {product.price}$
-                    </div>
-
                     <div className="actions">
-                        <button onClick={() => handleAddToCart(product)}>
-                            Add to cart
-                        </button>
-
                         <button
                             className="secondary-btn"
-                            onClick={backToProducts}
+                            onClick={backToPosts}
                         >
-                            Back to products
+                            Back to post
                         </button>
                     </div>
                 </div>

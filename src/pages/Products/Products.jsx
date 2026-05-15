@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { addToCart } from "../../store/cart/cartActions.js";
-import { setProducts } from "../../store/products/productsActions.js";
+import { addToCart } from "../../store/slices/cartSlice.js";
+import { setProducts } from "../../store/slices/productsSlice.js";
 
 import { productsData } from "../../data/products.js";
 

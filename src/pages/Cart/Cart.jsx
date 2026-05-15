@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {clearCart, removeFromCart} from "../../store/cart/cartActions.js";
+
+import { removeFromCart, clearCart } from "../../store/slices/cartSlice.js";
 
 function CartProduct({ product, removeFromCart }) {
     return (
@@ -36,6 +37,7 @@ export default function Cart() {
     const dispatch = useDispatch();
 
     const { items } = useSelector(state => state.cart);
+    console.log(items);
 
     const handleRemoveFromCart = (productId) => {
         dispatch(removeFromCart(productId));

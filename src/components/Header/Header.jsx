@@ -15,6 +15,8 @@ export default function Header() {
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
             <Link to="/cart">Cart</Link>
+            <Link to="/posts">Posts</Link>
+            <Link to="/create-post">New Post</Link>
 
             <button onClick={toggleTheme}>Light</button>
         </div>

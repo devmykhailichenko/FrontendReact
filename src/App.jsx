@@ -9,6 +9,9 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
 import Home from "./pages/Home/Home.jsx";
 import FormRegular from "./pages/FormRegular/FormRegular.jsx";
 import FormFormik from "./pages/FormFormik/FormFormik.jsx";
+import Posts from "./pages/Posts/Posts.jsx";
+import PostDetails from "./pages/PostDetails/PostDetails.jsx";
+import CreatePost from "./pages/CreatePost/CreatePost.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
 export default function App() {
@@ -22,6 +25,9 @@ export default function App() {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/products/:id" element={<ProductDetails />} />
+                    <Route path="/posts" element={<Posts />} />
+                    <Route path="/posts/:id" element={<PostDetails />} />
+                    <Route path="/create-post" element={<CreatePost />} />
                     <Route path="/form-regular" element={<FormRegular />} />
                     <Route path="/form-formik" element={<FormFormik />} />
                     <Route path="*" element={<NotFound />} />
