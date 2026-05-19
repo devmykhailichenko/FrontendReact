@@ -12,6 +12,7 @@ import FormFormik from "./pages/FormFormik/FormFormik.jsx";
 import Posts from "./pages/Posts/Posts.jsx";
 import PostDetails from "./pages/PostDetails/PostDetails.jsx";
 import CreatePost from "./pages/CreatePost/CreatePost.jsx";
+import AboutMe from "./pages/AboutMe/AboutMe.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
                     <Route path="/products" element={<Products />} />
                     <Route path="/products/:id" element={<ProductDetails />} />
                     <Route path="/posts" element={<Posts />} />
+                    <Route path="/about-me" element={<AboutMe />} />
                     <Route path="/posts/:id" element={<PostDetails />} />
                     <Route path="/create-post" element={<CreatePost />} />
                     <Route path="/form-regular" element={<FormRegular />} />

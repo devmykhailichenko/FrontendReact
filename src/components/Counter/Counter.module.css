@@ -1,0 +1,8 @@
+.counter {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #16a34a;
+}

@@ -37,7 +37,6 @@ export default function Cart() {
     const dispatch = useDispatch();
 
     const { items } = useSelector(state => state.cart);
-    console.log(items);
 
     const handleRemoveFromCart = (productId) => {
         dispatch(removeFromCart(productId));

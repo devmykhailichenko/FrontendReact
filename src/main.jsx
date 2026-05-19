@@ -10,6 +10,7 @@ import { store } from './store/store.js';
 import App from './App.jsx';
 
 import './index.css';
+import "antd/dist/reset.css";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
